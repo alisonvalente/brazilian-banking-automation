@@ -9,6 +9,37 @@
 
     composer require gpupo/brazilian-banking-automation
 
+
+## Usage
+
+
+### Modo 1
+
+  $header = new Header($toAttr($header));
+  $trailer = new Trailer($toAttr($trailer));
+  $item = new Item($toAttr($item));
+
+  $itemCollection = new Collection();
+  $itemCollection->add($item);
+
+### Modo 2
+
+
+  $cnab400 = new Factory\Cnab400();
+
+  $returnFile = $cnab400->factoryReturnFile();
+
+  $returnFile->getHeader()->set('foo', 'bar');
+  $returnFile->getTrailer()->set('foo', 'bar');
+
+
+  $returnFile->getItems()->add($cnab400->factoryReturnItem());
+
+
+
+
+
+
 ## Console
 
      ./bin/brazilian-banking-automation
