@@ -23,10 +23,10 @@ class File
     protected $items;
     protected $trailer;
 
-    public function __construct(Header $header, Collection $items, Trailer $trailer)
+    public function __construct(Header $header, Trailer $trailer)
     {
         $this->header = $header;
-        $this->items = $items;
+        $this->items = new Collection();
         $this->trailer = $trailer;
     }
 

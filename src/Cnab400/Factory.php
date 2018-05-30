@@ -21,26 +21,25 @@ use Gpupo\BrazilianBankingAutomation\Cnab400\ReturnFile;
 
 class Factory
 {
-    public static function factoryReturnFile(?array $header = [], ?array $trailer = [])
+    public static function factoryReturnFile(array $header = [], array $trailer = [])
     {
         $header = self::factoryReturnFileHeader($header);
         $trailer = self::factoryReturnFileTrailer($trailer);
-        $collection = new ReturnFile\Collection();
 
-        return new ReturnFile\File($header, $collection, $trailer);
+        return new ReturnFile\File($header, $trailer);
     }
 
-    public static function factoryReturnFileItem(?array $data = [])
+    public static function factoryReturnFileItem(array $data = [])
     {
         return new ReturnFile\Item($data);
     }
 
-    public static function factoryReturnFileHeader(?array $data = [])
+    public static function factoryReturnFileHeader(array $data = [])
     {
         return new ReturnFile\Header($data);
     }
 
-    public static function factoryReturnFileTrailer(?array $data = [])
+    public static function factoryReturnFileTrailer(array $data = [])
     {
         return new ReturnFile\Trailer($data);
     }

@@ -34,9 +34,10 @@ class FileTest extends AbstractTestCase
   /**
    * @dataProvider provider
    */
-    public function testGetContent(Header $header, Collection $items, Trailer $trailer)
+    public function testGetContent(Header $header, Item $item, Trailer $trailer)
     {
-        $file = new File($header, $items, $trailer);
+        $file = new File($header, $trailer);
+        $file->addItem($item);
 
         $this->assertInstanceof(File::class, $file);
 
@@ -61,9 +62,6 @@ class FileTest extends AbstractTestCase
         $trailer = new Trailer($toAttr($trailer));
         $item = new Item($toAttr($item));
 
-        $itemCollection = new Collection();
-        $itemCollection->add($item);
-
-        return [[$header, $itemCollection, $trailer]];
+        return [[$header, $item, $trailer]];
     }
 }

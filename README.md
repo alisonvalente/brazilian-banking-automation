@@ -12,28 +12,47 @@
 
 ## Usage
 
+$headerAttributes = [
+    'tipo_de_registro' => '0',
+    'codigo_de_retorno' => '2',
+    //...all required fields
+];
 
-### Modo 1
+$trailerAttributes = [
+    'tipo_de_registro' => '9',
+    'codigo_de_retorno' => '2',
+    //...all required fields
+];
 
-  $header = new Header($toAttr($header));
-  $trailer = new Trailer($toAttr($trailer));
-  $item = new Item($toAttr($item));
-
-  $itemCollection = new Collection();
-  $itemCollection->add($item);
-
-### Modo 2
-
-
-  $cnab400 = new Cnab400\Factory();
-
-  $returnFile = $cnab400->factoryReturnFile();
-
-  $returnFile->getHeader()->set('foo', 'bar');
-  $returnFile->getTrailer()->set('foo', 'bar');
+$itemAttributes = [
+    'tipo_de_registro' => '001',
+    'codigo_de_inscricao' => '1',
+    //...all required fields
+];
 
 
-  $returnFile->getItems()->add($cnab400->factoryReturnItem());
+### Modo 1 - instantiating objects
+
+  $headerObject = new Header($headerAttributes);
+  $trailerObject = new Trailer($trailerAttributes);
+  $itemObject = new Item($itemAttributes);
+
+  $file = new File($headerObject, $trailerObject);
+  $file->addItem($itemObject);
+
+  $file->getContent();
+
+### Modo 2 - using factory
+
+  $factory = new Cnab400\Factory();
+
+  $item = $factory->factoryReturnItem($itemAttributes);
+  $file = $factory->factoryfile($headerAttributes, $trailerAttributes);
+  $file->addItem(item);
+
+  $file->getContent();
+
+
 
 
 
