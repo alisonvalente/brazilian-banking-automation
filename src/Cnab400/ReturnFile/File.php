@@ -49,13 +49,28 @@ class File
         return $this->header;
     }
 
+    public function setHeader(Header $header)
+    {
+        $this->header = $header;
+    }
+
     public function getItems()
     {
         return $this->items;
     }
 
+    public function addItem(Item $item)
+    {
+        $this->items->add($item);
+    }
+
     public function getTrailer()
     {
         return $this->trailer;
+    }
+
+    public function setTrailer(Trailer $trailer)
+    {
+        $this->trailer = $trailer;
     }
 }

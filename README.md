@@ -25,7 +25,7 @@
 ### Modo 2
 
 
-  $cnab400 = new Factory\Cnab400();
+  $cnab400 = new Cnab400\Factory();
 
   $returnFile = $cnab400->factoryReturnFile();
 
@@ -34,6 +34,8 @@
 
 
   $returnFile->getItems()->add($cnab400->factoryReturnItem());
+
+
 
 
 
